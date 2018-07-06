@@ -1,5 +1,4 @@
 class EpicenterController < ApplicationController
-	before_action :authenticate_user!
 
   def feed
   	@following_tweets = []
