@@ -1,6 +1,6 @@
 <h1>@<%= @user.username %>'s Profile & Tweets</h1>
 
-<p><%= @user.name %></p>
+<p><%= @user.name %> says:</p>
 
 <p>
   <% if current_user.following.include?(@user.id) %>
@@ -13,8 +13,8 @@
 </p>
 
 <% @user.tweets.each do |tweet| %>
-  <div>
-    <p>@<%= @user.username %></p>
+  <div class="well">
+    <p><%= image_tag tweet.user.avatar.url, size: 25 %> @<%= @user.username %></p>
     <p><%= tweet.message %></p>
   </div>
 <% end %>
