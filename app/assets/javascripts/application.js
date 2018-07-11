@@ -15,3 +15,27 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).on('turbolinks:load',function(){
+// 	$('.unfollow_btn').hover(function(){
+// 		$(this).removeClass('btn btn-primary');
+// 		$(this).addClass('btn btn-danger');
+// 		$(this).html("Unfollow");
+// 	}, function(){
+// 		$(this).html("Following");
+// 		$(this).removeClass('btn btn-danger');
+// 		$(this).addClass('btn btn-primary');
+// 	});
+// })
+
+$(document).ready(function(){
+	$('.unfollow_btn').hover(function(){
+		$(this).removeClass('btn btn-primary');
+		$(this).addClass('btn btn-danger');
+		$(this).html("Unfollow");
+	}, function(){
+		$(this).html("Following");
+		$(this).removeClass('btn btn-danger');
+		$(this).addClass('btn btn-primary');
+	});
+})
