@@ -1,5 +1,5 @@
 <div class="row">
-  <% @users.each do |user| %>
+  <% @users.each_with_index do |user, ind| %>
     <div class="col-md-3">
       <div class="well user-list-wells">
         <div class="row">
@@ -9,7 +9,7 @@
           <div class="col-md-6">
             <p>
               <% if current_user.following.include?(user.id) %>
-                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary", class: "unfollow_btn" %>
+                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary", id: "unfollow_btn_#{ind}" %>
               <% else %>
                 <% if current_user.id != user.id %>
                   <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-primary" %>
@@ -27,5 +27,18 @@
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function(){
+        $('#unfollow_btn_<%= ind %>').hover(function(){
+          $(this).removeClass('btn btn-primary');
+          $(this).addClass('btn btn-danger');
+          $(this).html("Unfollow");
+        }, function(){
+          $(this).html("Following");
+          $(this).removeClass('btn btn-danger');
+          $(this).addClass('btn btn-primary');
+        });
+      });
+    </script>
   <% end %>
 </div>
